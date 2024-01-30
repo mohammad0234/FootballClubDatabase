@@ -1,5 +1,4 @@
 /* Student name:  Mohammad Shaha */
-/* Student ID: 220013690 */
 
 /* SECTION 1 - CREATE TABLE STATEMENTS */
 
