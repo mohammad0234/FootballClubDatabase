@@ -1,0 +1,331 @@
+/* Student name:  Mohammad Shaha */
+/* Student ID: 220013690 */
+
+/* SECTION 1 - CREATE TABLE STATEMENTS */
+
+create table addd987Players
+(
+Player_id integer(8) primary key,
+Player_First_name char(30),
+Player_Surname char(30),
+Position varchar(15),
+Player_Home_Town varchar(60),
+Age integer(3)
+);
+
+create table addd987Coaches
+(
+Coach_id integer(8) primary key,
+Coach_First_name char(30),
+Coach_Surname char(30),
+Role_in_club varchar(20),
+Coaches_Home_Town varchar(60)
+);
+
+create table addd987Training
+(
+Training_Date integer(6) primary key,
+Time time,
+Training_Location varchar(30),
+Training_Absent_Player_id integer(8),
+foreign key (Training_Absent_Player_id) references addd987Players (Player_id)
+);
+
+create table addd987Matches
+(
+Match_Date integer(6) primary key,
+Time time,
+Opposition varchar(30),
+Match_Location varchar(30),
+Goals_scored integer(3),
+Goals_conceded integer(3),
+Matches_Absent_Player_id integer(8),
+Absent_Coach_id integer(8),
+foreign key (Matches_Absent_Player_id) references addd987Players (Player_id),
+foreign key (Absent_Coach_id) references addd987Coaches (Coach_id)
+);
+
+create table addd987Payments
+(
+Player_id integer(8) primary key,
+Payment_method varchar(15),
+Amount_paid float(5,2),
+Type_of_payment char(10),
+foreign key (Player_id) references addd987Players (Player_id)
+);
+
+/* SECTION 2 - INSERT STATEMENTS */
+
+insert into addd987Players values 
+(132465, 'Mohammad', 'Shaha', 'Defender', 'Welling', 18),
+(121027, 'Yash', 'Kennedy', 'Midfield', 'Erith', 18),
+(187119, 'Micheal', 'Olsen', 'Midfield', 'Bexleyheath', 17),
+(137784, 'Zach', 'Dean', 'Attacker', 'Bexleyheath', 18),
+(148612, 'Donald', 'Gibbs', 'Defender', 'Welling', 17),
+(113944, 'Osman', 'Fuentes', 'Attacker', 'Eltham', 16),
+(144362, 'Idris', 'Hoover', 'Attacker', 'Welling', 17),
+(139593, 'Syed', 'Lyons', 'Goalkeeper', 'Erith', 18),
+(116327, 'Everly', 'Stuart', 'Defender', 'Falconwood', 18),
+(172222, 'Harold', 'Keith', 'Defender', 'Welling', 17),
+(190054, 'Ryan', 'Hardin', 'Midfield', 'Falconwood', 18),
+(188402, 'Herbie', 'Houston', 'Attacker', 'Falconwood', 17),
+(186462, 'Mattie', 'Haines', 'Goalkeeper', 'Eltham', 17),
+(133281, 'Tariq', 'Juarez', 'Midfield', 'Bexleyheath', 18),
+(111099, 'Abdul', 'Rahman', 'Midfield', 'Eltham', 17),
+(154311, 'Dan', 'Wilkins', 'Defender', 'Falconwood', 18),
+(161418, 'Samir', 'Juarez', 'Goalkeeper', 'Bexleyheath', 18),
+(124116, 'Fred', 'Cooke', 'Attacker', 'Bexleyheath', 16),
+(177072, 'Philip', 'Hooper', 'Attacker', 'Plumstead', 18),
+(185737, 'Rafe', 'House', 'Defender', 'Welling', 17);
+
+insert into addd987Coaches values
+(363452, 'Lesley', 'Winkles', 'Manager', 'Eltham'),
+(322907, 'Kane', 'Jones', 'Assistant manager', 'Bexleyheath'),
+(397294, 'Brett', 'Berger', 'Assistant manager', 'Erith'),
+(373842, 'Mina', 'Rivers', 'Assistant manager', 'Woolwich'),
+(324873, 'Leon', 'Kerr', 'Physio', 'Welling'),
+(392963, 'Dylan', 'Deleon', 'Physio', 'Welling'),
+(310348, 'Harun', 'Hull', 'Kit man', 'Bexleyheath'),
+(387281, 'Lachlan', 'Pope', 'Goalkeeping coach', 'Falconwood'),
+(336423, 'Casper', 'Porter', 'Kit man', 'Plumstead'),
+(375851, 'Dylan', 'Flinch', 'Analyst', 'Erith');
+
+insert into addd987Payments values
+(132465, 'Online bank',30.00, 'monthly'),
+(121027, 'Cash',30.00, 'monthly'),
+(187119, 'Online bank',30.00, 'monthly'),
+(137784, 'Online bank',280.00, 'annual'),
+(148612, 'Cash',280.00, 'annual'),
+(113944,'Cash',280.00, 'annual'),
+(144362, 'Online bank',30.00, 'monthly'),
+(139593, 'Online bank',30.00, 'monthly'),
+(116327, 'Cash',280.00, 'annual'),
+(172222, 'Cash',30.00, 'monthly'),
+(190054, 'Online bank',280.00, 'annual'),
+(188402, 'Online bank',30.00, 'monthly'),
+(186462, 'Online bank',30.00, 'monthly'),
+(133281, 'Cash',280.00, 'annual'),
+(111099, 'Cash',30.00, 'monthly'),
+(154311, 'Online bank',280.00, 'annual'),
+(161418, 'online bank',280.00, 'annual'),
+(124116, 'online bank',30.00, 'monthly'),
+(177072, 'Cash',30.00, 'monthly'),
+(185737, 'Online bank',280.00, 'annual');
+
+insert into addd987Training values
+
+(220801, 180000, 'Samuel Montagu',null),
+(220804, 173000, 'Bexleyheath goals',121027),
+(220809, 180000, 'Samuel Montagu',null),
+(220812, 183000, 'Samuel Montagu',null),
+(220816, 180000, 'Welling Stadium',113944),
+(220819, 170000, 'Samuel Montagu',null),
+(220823, 173000, 'Bexleyheath goals',172222),
+(220826, 180000, 'Welling Stadium',null),
+(220901, 180000, 'Samuel Montagu',188402),
+(220904, 183000, 'Welling Stadium',148612),
+(220909, 180000, 'Samuel Montagu',null),
+(220912, 173000, 'Bexleyheath goals',133281),
+(220916, 170000, 'Bexleyheath goals',190054),
+(220919, 183000, 'Samuel Montagu',null),
+(220923, 180000, 'Samuel Montagu',null),
+(220926, 170000, 'Bexleyheath goals',190054),
+(221001, 173000, 'Bexleyheath goals',116327),
+(221004, 180000, 'Samuel Montagu',null),
+(221009, 180000, 'Welling Stadium',186462),
+(221012, 183000, 'Samuel Montagu',null);
+
+insert into addd987Matches values
+(220803, 130000, 'Erith Fc','Welling Stadium',2,1,null,null),
+(220807, 120000, 'Beacons','Welling Stadium',3,1,null,null),
+(220814, 133000, 'Eltham Fc','Park view road',1,1, 132465,363452),
+(220817, 130000, 'Plumstead Fc','Welling Stadium',0,0,187119,null),
+(220821, 130000, 'NG Academy','Mayesbrook Stadium',1,0,null,322907),
+(220824, 110000, 'Beckton Fc','Hayes Stadium',0,2, null,null),
+(220828, 100000, 'Junior Reds','Welling Stadium',1,2, 187119,397294),
+(220830, 103000, 'Charlton Athletic','Charlton Stadium',2,2,137784,null),
+(220903, 120000, 'Hollands Court','Welling Stadium',3,4, null,310348),
+(220907, 150000, 'Long Lane','Park view road',3,5, null,392963),
+(220910, 133000, 'Dagenham Fc','Aveley Stadium',4,0, 148612,null),
+(220914, 090000, 'AW Coaching','Welling Stadium',2,0, null,null),
+(220917, 143000, 'Redbridge Club','Welling Stadium',0,0, 139593,336423),
+(220921, 133000, 'Milwall Fc','Hayes Lane',4,2, 116327,null),
+(220924, 130000, 'Orpinton Rovers','Mayesbrook Stadium',1,3, null,375851),
+(220928, 120000, 'Leyton Orient','Welling Stadium',6,3, 172222,null),
+(221003, 110000, 'Bromley Fc','Aveley', 0,1,null,373842),
+(221007, 100000, 'Woolwich Fc','Princes park',2,1, null,null),
+(221010, 113000, 'Bexley Fc','Welling Stadium',1,1,190054,387281),
+(221014, 140000, 'Erith Fc','Welling Stadium',3,2,133281,null);
+
+/* SECTION 3 - UPDATE STATEMENTS */
+
+/*1*/
+UPDATE addd987Players SET Player_First_name = 'Steve', Player_Surname = 'Jackson'
+WHERE Player_id = 113944;
+
+/*2*/
+UPDATE addd987Players SET Player_First_name = 'John', Player_Surname = 'Barry', Position = 'Midfield', Age = 19
+WHERE Player_id = 116327;
+
+/*3*/
+UPDATE addd987Coaches SET Coach_First_name = 'Alex', Coach_Surname = 'Ferguson', Role_in_club = 'Manager'  
+WHERE Coach_id = 363452;
+
+/*4*/
+UPDATE addd987Matches SET  Time = 123000, Opposition = 'Falconwood Fc', Match_Location = 'Welling Stadium'  
+WHERE Match_Date = 220821;
+
+/*5*/
+UPDATE addd987Training SET  Time = 190000, Training_Location = 'Welling Stadium'  
+WHERE Training_Date = 220809;
+
+/* SECTION 4 - SINGLE TABLE SELECT STATEMENTS */
+
+/* 1) List all the names of the players that play in midfield */
+
+select Player_First_name, Player_Surname
+from addd987Players
+where Position = 'Midfield';
+
+
+/* 2) List all the names of the asisstant managers in the club */
+
+select Coach_First_name, Coach_Surname
+from addd987Coaches
+where Role_in_club = 'Assistant Manager';
+
+/* 3) Compare the average goals scored and goals conceded in all the matches */
+select avg(Goals_scored)
+from addd987Matches;
+
+select avg(Goals_conceded)
+from addd987Matches;
+
+/* 4) List all the oppositions in the month of November */
+select distinct(Opposition)
+from addd987Matches
+where Match_Date >= 220901 AND Match_Date<=220930;
+
+/* 6) The most amount of goals scored in one match */
+
+select max(Goals_scored)
+from addd987Matches;
+
+/* 7) Count how many training sessions took place in Welling Stadium */
+select count(Training_Location)
+from addd987Training
+where Training_Location = 'Welling Stadium';
+
+/* 8) What is the average age of the players */
+
+select avg(Age)
+from addd987Players;
+
+/* 9) Name the opponents where the goals scored was higher than the average goals scored */
+
+SELECT Opposition, Goals_scored
+FROM addd987Matches
+WHERE Goals_scored>
+(SELECT AVG(Goals_scored)
+FROM addd987Matches);
+
+/* 10) Against what opposition did we score more than 3 goals  */
+
+SELECT Goals_scored, Opposition
+FROM addd987Matches
+WHERE Goals_scored>=2
+GROUP BY Match_Location;
+
+/* 11) Rank from highest to lowest the most goals conceded without including the matches where 0 goals were conceded. */
+
+SELECT Goals_conceded, Opposition
+FROM addd987Matches 
+GROUP BY Goals_conceded
+HAVING (Goals_conceded) >=1 
+ORDER BY (Goals_conceded) desc;
+
+/* 12) Name the opposition where the both coach and players were not absent. */
+
+SELECT Opposition, Matches_Absent_Player_id, Absent_Coach_id
+FROM addd987Matches
+WHERE Matches_Absent_Player_id is null 
+AND Absent_Coach_id is null;
+
+/* SECTION 5 - MULTIPLE TABLE SELECT STATEMENTS */
+
+/* 1) List names of players who made annual payments from cash */
+
+SELECT Player_First_name, Player_Surname, Payment_method, Type_of_payment
+FROM addd987Players, addd987Payments
+WHERE addd987Players.Player_id= addd987Payments.Player_id 
+AND Payment_method = 'Cash'
+AND Type_of_payment = 'annual';
+
+/* 2) Names of players that was absent from Training */
+
+SELECT Player_First_name, Player_Surname, Training_Absent_Player_id 
+FROM addd987Players, addd987Training 
+WHERE addd987Players.Player_id= addd987Training.Training_Absent_Player_id;
+
+/* 3) Name the players that was absent from Matches in September */
+
+SELECT Player_First_name, Player_Surname, Matches_Absent_Player_id, Match_Date
+FROM addd987Players, addd987Matches
+WHERE addd987Players.Player_id= addd987Matches.Matches_Absent_Player_id
+AND Match_Date >= 220901 AND Match_Date <=220930;
+
+/* 4) Names of players that was absent from both Training and Matches */
+
+SELECT Player_First_name, Player_Surname, Training_Absent_Player_id, Matches_Absent_Player_id
+FROM addd987Players, addd987Matches, addd987Training
+WHERE addd987Players.Player_id= addd987Matches.Matches_Absent_Player_id
+AND addd987Players.Player_id = addd987Training.Training_Absent_Player_id;
+
+/* 5) List all the training and matches at Welling Stadium in October */
+
+SELECT Training_Location, Training_date, Match_Location, Match_Date
+FROM addd987Training, addd987Matches
+WHERE Training_Location = 'Welling Stadium' AND Match_Location = 'Welling Stadium'
+AND Training_Date >= 221001 AND Training_Date <= 221030
+AND Match_Date >= 221001 AND Match_Date <= 221030;
+
+/* 6) Name the players that was never absent from a match */
+
+SELECT Player_First_name, Player_Surname
+FROM addd987Players
+WHERE Player_id NOT IN (
+SELECT Matches_Absent_Player_id
+FROM addd987Matches
+WHERE addd987Players.Player_id = addd987Matches.Matches_Absent_Player_id
+);
+
+/* 7) Name the coaches and players that live in Erith */
+
+SELECT DISTINCT Player_First_name, Coach_First_name, Player_Home_Town, Coaches_Home_Town
+FROM addd987Players INNER JOIN addd987Coaches
+WHERE Coaches_Home_Town = 'Erith' 
+AND Player_Home_Town = 'Erith' 
+GROUP BY Player_First_name, Coach_First_name ;
+
+
+/* SECTION 6 - DELETE ROWS 
+
+DELETE FROM addd987Coaches WHERE Coach_id = 324873;
+DELETE FROM addd987Matches WHERE Opposition = 'Bexley Fc';
+DELETE FROM addd987Training WHERE Training_Date = 221012;
+
+*/
+
+/* SECTION 7 - DROP TABLES 
+
+DROP TABLE addd987Matches;
+DROP TABLE addd987Training;
+DROP TABLE addd987Payments;
+DROP TABLE addd987Players;
+DROP TABLE addd987Coaches;
+
+*/
+
+
+
+
